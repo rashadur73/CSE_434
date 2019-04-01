@@ -323,12 +323,16 @@ cv2.imshow("Segmented RGB",final_image)
 #final_area_resize = cv2.resize(final_area,(256,256))
 
 #cv2.imshow("Effected Area", final_area_resize)
-
+fl = open("output.txt","w+")
 cnts,p, hierarchy = cv2.findContours(final_mask, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
 
-
-cnt = p[0]
-area = cv2.contourArea(cnt)
+try:
+    cnt = p[0]
+    area = cv2.contourArea(cnt)
+except:
+    print "Healthy Leaf"
+    fl.write("Healthy Leaf")
+    
 
 for i in p:
     (x,y),radius = cv2.minEnclosingCircle(i)
@@ -516,7 +520,7 @@ print sensitivity
 
 #plt.plot(fpr,tpr,marker='.')
 
-fl = open("output.txt","w+")
+
 
 print "accuracy:   "+str(accuracy)+"%"
 
