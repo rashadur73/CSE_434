@@ -62,7 +62,7 @@ print data_test
 #print target_test                 
 
 def kmeans(histogram):
-    for k in range(0,21):
+    for k in range(0,20):
         #print '\niteration',k
         #''' First iteration assign random centroid points '''
         if k == 0:
